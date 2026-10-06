@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+.env
+output/*.json
+output/*.csv
+*.log
+.DS_Store
+.vscode/
+EOF
