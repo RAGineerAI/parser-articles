@@ -1,0 +1,7 @@
+name: test
+base_url: "https://example.com"
+list_selector: "div.item"
+fields:
+  title:
+    selector: "h2"
+    type: text
