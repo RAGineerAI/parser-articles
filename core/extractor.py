@@ -43,3 +43,26 @@ def extract_field(
         value = found.get(attribute_name)
         return value.strip() if value else ""
 
+def extract_fields(
+        element: Tag, fields_config: Dict[str, Any]
+) -> Dict[str, str]:
+    """
+    Извлекает все поля из одного HTML-элемента.
+    
+    Args:
+        element: HTML-элемент (например, <article>)
+        fields_config: словарь полей из YAML
+    
+    Returns:
+        Словарь {имя_поля: значение}
+    """
+    result = {}
+
+    for key, value in fields_config.items():
+
+        extracted = extract_field(element, key, value)
+        
+        result[key] = extracted
+
+    return result
+    
