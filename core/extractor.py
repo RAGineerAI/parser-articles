@@ -65,4 +65,35 @@ def extract_fields(
         result[key] = extracted
 
     return result
+
+def extract_all(
+    html: str,
+    list_selector: str,
+    fields_config: Dict[str, Any]
+) -> List[Dict[str, str]]:
+    """
+    Извлекает данные из всех элементов списка на странице.
     
+    Args:
+        html: HTML-код страницы
+        list_selector: CSS-селектор элементов списка
+        fields_config: словарь полей из YAML
+    
+    Returns:
+        Список словарей с данными
+    """
+    soup = BeautifulSoup(html, "lxml")
+    elements = soup.select(list_selector)
+    
+    logger.info(f"Найдено элементов: {len(elements)}")
+    
+    if not elements:
+        logger.warning(f"Ничего не найдено по селектору: {list_selector}")
+        return []
+    
+    results = []
+    for element in elements:
+        data = extract_fields(element, fields_config)
+        results.append(data)
+    
+    return results
