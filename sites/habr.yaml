@@ -1,0 +1,19 @@
+name: habr
+base_url: "https://habr.com/ru/articles/"
+request_delay: 10.0
+list_selector: "article.tm-articles-list__item"
+
+fields:
+  title:
+    selector: "a.tm-title__link"
+    type: text
+  author:
+    selector: "a.tm-user-info__username"
+    type: text
+  link:
+    selector: "a.tm-title__link"
+    type: attribute
+    attribute: "href"
+  counter:
+    selector: "span.tm-icon-counter__value"
+    type: text

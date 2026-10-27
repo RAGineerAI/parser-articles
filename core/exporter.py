@@ -99,4 +99,4 @@ def export_all(data: List[Dict[str, Any]], site_name: str, output_dir: str = "ou
     json_path = save_json(data, site_name,output_dir)
     csv_path = save_csv(data, site_name,output_dir)
 
-    return json_path, csv_path
+    return {"json": json_path, "csv": csv_path}
